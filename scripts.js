@@ -283,19 +283,31 @@ function setupImageToggle() {
     if (!changeBtn) return;
     
     changeBtn.addEventListener('click', function() {
-        const img1 = document.getElementById('testImage1');
-        const img2 = document.getElementById('testImage2');
-        
-        if (!img1 || !img2) return;
-        
-        // Toggle visibility
-        if (img1.classList.contains('hidden')) {
-            img1.classList.remove('hidden');
-            img2.classList.add('hidden');
-        } else {
-            img1.classList.add('hidden');
-            img2.classList.remove('hidden');
+        let img1 = document.getElementById('testImage1');
+        if (!img1) {
+            console.log("img 1 not found by id testImage1");
+            return;
         }
+        //const img2 = document.getElementById('testImage2');
+
+        if (img1.getAttribute("display") == "cat") {
+            img1.setAttribute("src", "pictures/bunny.jpg");
+            img1.setAttribute("display", "bunny");
+        }
+        else {
+            img1.setAttribute("src", "pictures/cat.jpg");
+            img1.setAttribute("display", "cat");
+        }
+        // if (!img1 || !img2) return;
+        
+        // // Toggle visibility
+        // if (img1.classList.contains('hidden')) {
+        //     img1.classList.remove('hidden');
+        //     img2.classList.add('hidden');
+        // } else {
+        //     img1.classList.add('hidden');
+        //     img2.classList.remove('hidden');
+        // }
     });
 }
 

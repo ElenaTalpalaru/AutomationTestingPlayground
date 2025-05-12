@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Backend API Testing with JSONPlaceholder">
+    <meta name="keywords" content="automation, testing, api, backend">
+    <meta name="author" content="Elena Talpalaru">
+    <title>🌐 Backend API Testing</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles specific to backend page */
+        .api-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .api-header h1 {
+            margin: 0;
+            color: white;
+        }
+        
+        .api-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .navigation-links {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .navigation-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .navigation-links a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="api-header">
+            <h1>Backend API Testing</h1>
+            <p>Test RESTful API operations with JSONPlaceholder</p>
+        </div>
+        
+        <div class="navigation-links">
+            <a href="index.html">← Back to Main Testing Playground</a>
+        </div>
+        
+        <section id="api-section">
+            <h2>API Operations</h2>
+            <p>Test backend integration with JSONPlaceholder API:</p>
+            
+            <div class="api-controls">
+                <button id="fetchTodosBtn">Fetch TODOs</button>
+                <button id="fetchSpecificTodoBtn">Fetch TODO by ID</button>
+                <button id="createTodoBtn">Create TODO</button>
+                <button id="updateTodoBtn">Update TODO</button>
+                <button id="deleteTodoBtn">Delete TODO</button>
+                <button id="clearTodosBtn">Clear All</button>
+            </div>
+            
+            <div class="api-input-container">
+                <div class="form-group">
+                    <label for="todoIdInput">TODO ID:</label>
+                    <input type="number" id="todoIdInput" placeholder="Enter TODO ID" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="todoTitleInput">TODO Title:</label>
+                    <input type="text" id="todoTitleInput" placeholder="Enter TODO title">
+                </div>
+                <div class="form-group">
+                    <label for="todoCompletedInput">Completed:</label>
+                    <select id="todoCompletedInput">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="apiLoading" class="loading">Loading...</div>
+            <div id="apiError" class="alert"></div>
+            <div id="apiResult" class="result"></div>
+            
+            <div id="todosContainer">
+                <h3>TODOs List</h3>
+                <ul id="todosList"></ul>
+            </div>
+        </section>
+        
+        <section id="api-info">
+            <h2>API Information</h2>
+            <div class="info-content">
+                <h3>Base URL</h3>
+                <p><code>https://jsonplaceholder.typicode.com</code></p>
+                
+                <h3>Available Endpoints</h3>
+                <ul>
+                    <li><code>GET /todos</code> - Get all todos</li>
+                    <li><code>GET /todos/{id}</code> - Get specific todo</li>
+                    <li><code>POST /todos</code> - Create new todo</li>
+                    <li><code>PUT /todos/{id}</code> - Update todo</li>
+                    <li><code>DELETE /todos/{id}</code> - Delete todo</li>
+                </ul>
+                
+                <h3>Response Format</h3>
+                <pre><code>{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}</code></pre>
+            </div>
+        </section>
+    </div>
+
+    <footer id="footer">
+        <p>© 2025 ElenaT - Backend API Testing</p>
+    </footer>
+    
+    <button id="backToTopBtn" title="Back to Top">↑</button>
+    
+    <!-- Backend-specific scripts -->
+    <script src="backend-scripts.js"></script>
+    
+    <!-- Back to Top Button script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var backToTopButton = document.getElementById('backToTopBtn');
+            
+            if (!backToTopButton) return;
+            
+            function checkScrollPosition() {
+                if (window.pageYOffset > 300 || document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            }
+            
+            window.addEventListener('scroll', checkScrollPosition);
+            
+            backToTopButton.addEventListener('click', function() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
+            
+            checkScrollPosition();
+        });
+    </script>
+</body>
+</html>
