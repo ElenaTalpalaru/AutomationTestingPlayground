@@ -1,4 +1,7 @@
 ### For Automation Testing
+here is the published page: 
+https://elenatalpalaru.github.io/AutomationTestingPlayground/
+
 
 These web app provide a comprehensive environment for practicing automation testing with tools like:
 - Selenium WebDriver
